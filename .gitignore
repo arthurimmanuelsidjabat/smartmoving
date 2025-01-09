@@ -26,6 +26,10 @@
 # Backup
 /wp-content/ai1wm-backups
 
+# Upgrade
+/wp-content/upgrade
+/wp-content/upgrade-temp-backup
+
 # Example plugin
 /wp-content/plugins/hello.php
 
