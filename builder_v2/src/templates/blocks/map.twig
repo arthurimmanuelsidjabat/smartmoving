@@ -15,8 +15,8 @@
 <section class="firebase-map firebase-h__800 flex flex-row justify-center items-center">
   <div class="w-full relative text-center">
     {% if fields.description %}
-    <div class="location-wrapper w-fit mx-auto bg-primary p-8 rounded-b-xl">
-      <h3 class='text-2xl text-white p-4 mb-4'>{{ fields.description }}</h3>
+    <div class="location-wrapper flex justify-center items-center w-fit mx-auto bg-primary p-8 absolute left-2 -top-px rounded-b-xl">
+      <h3 class='text-2xl text-white p-4 mb-0'>{{ fields.description }}</h3>
     </div>
     {% endif %}
     {{ fields.map_embed }}

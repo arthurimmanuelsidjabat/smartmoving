@@ -14,11 +14,13 @@
 
 {% if fields.banner_version == 'ver1' %}
 <section
-	class="firebase-main-banner section-spacing {% if fn('is_front_page') %}md:h-700 lg:h-900{% else %}md:h-650 lg:h-750{% endif %} w-full flex flex-col px-10 {{ block.className }}"
-	{# Background settings #} {% if fields.banner.background %}
-	style="background-image: url('{{fields.banner.background}}'); background-size: cover; background-position: {{fields.banner.background_position}}; background-repeat: no-repeat;"
-	{% else %} style="background-color:{{fields.banner.color}};" {% endif %}>
+	class="firebase-main-banner section-spacing {% if fn('is_front_page') %}md:h-700 lg:h-800{% else %}md:h-650 lg:h-750{% endif %} w-full flex flex-col px-10 {{ block.className }}">
 	{% if fields.options.overlay %}
+	{% if fields.banner.background %}
+	<div class="absolute inset-0">
+		<img class="w-full h-full object-cover" src="{{fields.banner.background}}">
+	</div>
+	{% endif %}
 	{% if fields.options.overlay_color %}
 	<div class="overlay"
 		style="background-color:{{fields.options.overlay_color}}; opacity:{{fields.options.overlay_opacity}}; background-blend-mode: multiply;">
@@ -38,7 +40,7 @@
 			{% endif %}
 			{# Main title #}
 			{% if fields.banner.title %}
-			<h1 class="xl:w-10/12 text-6xl font-header font-normal mb-6 mx-auto">
+			<h1 class="text-4xl font-header leading-none font-bold mb-6 mx-auto xl:w-10/12 xl:text-6xl">
 				{{fields.banner.title }}</h1>
 			{% endif %}
 			{# Subtitle #}
@@ -48,10 +50,10 @@
 		</div>
 		{# Button wrap #}
 		{% if fields.banner.button %}
-		<div class="flex flex-col lg:flex-row flex-wrap">
+		<div class="flex flex-col flex-wrap justify-center items-center lg:flex-row">
 			{% for button in fields.banner.button %}
 			<a href="{{button.btn_link}}"
-				class="btn {{ button.button_style}} text-center md:text-left font-normal mb-6 {% if not loop.last %}lg:mr-4{% endif %} {% if button.ghost_version %}_light{% endif %}"
+				class="btn {{ button.button_style}} text-center md:text-left font-normal mb-6 !py-4 {% if not loop.last %}lg:mr-4{% endif %} {% if button.ghost_version %}_light{% endif %}"
 				data-aos="fade-up" data-aos-offset="150" data-aos-delay="{{loop.index}}50"
 				data-aos-duration="2*{{loop.index}}50" data-aos-once="true">
 				<span class="flex flex-row items-center">

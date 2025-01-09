@@ -46,6 +46,9 @@ module.exports = {
                 'dark': '#00153e',
                 'white': '#ffffff'
             },
+            aspectRatio: {
+                '4x3': '4 / 3',
+            },              
             padding: {
                 '14': '3.5rem',
                 '16': '4rem',
@@ -59,6 +62,7 @@ module.exports = {
                 '24': '6rem',
             },
             height: {
+                '200': '200px',
                 '300': '300px',
                 '350': '350px',
                 '400': '400px',

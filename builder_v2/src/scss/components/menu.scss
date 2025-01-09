@@ -25,15 +25,15 @@
             margin-right: 0;
 
             &:not(:last-child) {
-                margin-right: 1.1rem;
+                margin-right: 2rem;
             }
 
             .drop-menu {
-                width: max-content;
+                @apply w-full lg:w-max rounded-lg;
                 display: none;
 
                 .dropdown-link {
-                    @apply text-white;
+                    @apply text-black;
 
                     &:hover {
                         @apply text-primary;
@@ -47,7 +47,7 @@
                 position: relative;
 
                 .drop-menu {
-                    @apply bg-secondary;
+                    @apply bg-white;
                     position: absolute;
                     top: 2.2rem;
                     left: .3rem;
@@ -55,8 +55,7 @@
                     display: block;
                     padding: 1rem;
                     opacity: 0.95;
-                    border-radius: 2px;
-                    box-shadow: -1px 11px 18px -2px rgba(0, 0, 0, 0.75);
+                    box-shadow: 0px 12px 32px 0px rgba(0,0,0,.5);
                     z-index: 2;
 
                     >nav-link {

@@ -20,19 +20,18 @@
 		{% if imagetext.title or imagetext.subtitle or imagetext.content %}
 		<div
 			class="w-full {% if imagetext.column_layout %}md:w-7/12{% else %}md:w-5/12{% endif %} {% if imagetext.align_content %}my-auto {% else %}md:mb-0 mb-8{% endif %}  ">
-			<h2 class="font-header text-4xl lg:text-5xl mb-4">{{ imagetext.title}}</h2>
+			<h2 class="font-header tracking-wider text-gray uppercase mb-4">{{ imagetext.title}}</h2>
 			{% if imagetext.subtitle %}
-			<h3 class="font-xl font-semibold mb-6">{{ imagetext.subtitle }}</h3>
+			<h3 class="font-header text-4xl lg:text-5xl mb-8">{{ imagetext.subtitle }}</h3>
 			{% endif %}
 			{% if imagetext.content %}
 			<div class="font-normal leading-relaxed">{{ imagetext.content }}</div>
 			{% endif %}
 			{% if imagetext.button %}
 			<a href="{{ imagetext.button.url}}"
-				class="btn btn-primary w-content inline-block tracking-wider font-medium text-center mb-4"><img
-					src="{{imagetext.icon.url}}" class="injectable inline-block fill-white h-6 w-6 mb-1 mr-2"
-					title="{{imagetext.icon.title}}" alt="{{ imagetext.icon.alt }}"><span
-					class='text-xl'>{{imagetext.button.title}}</span>
+				class="btn btn-primary w-content inline-block tracking-wider text-center mb-4"><img
+					src="{{imagetext.icon.url}}" class="injectable inline-block h-4 w-5 mb-1 mr-2"
+					title="{{imagetext.icon.title}}" alt="{{ imagetext.icon.alt }}"><span>{{imagetext.button.title}}</span>
 			</a>
 			{% endif %}
 		</div>

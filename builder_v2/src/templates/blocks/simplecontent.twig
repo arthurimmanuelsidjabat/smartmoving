@@ -22,7 +22,7 @@
 			<h2 class="font-header text-4xl lg:text-5xl mb-8">
 				{{fields.title}}</h2>
 		{% endif %}
-		<div class="content-wrap mb-8 {% if fields.two_columns_layout %}w-full md:grid md:grid-cols-2 gap-6 text-left md:text-left{% else %}flex flex-col mx-auto w-full lg:w-10/12{% endif %}">
+		<div class="content-wrap mb-8 {% if fields.two_columns_layout %}w-full md:grid md:grid-cols-2 gap-6 text-left md:text-left{% else %}flex flex-col mx-auto w-full{% endif %}">
 			{{fields.description}}</div>
 		{% if fields.button %}
 			<a href="{{fields.button.url}}" class="btn inline-block btn-primary" data-aos="fade-in" data-aos-offset="150" data-aos-delay="350" data-aos-duration="750" data-aos-once="true">{{fields.button.title}}</a>

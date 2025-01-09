@@ -92,15 +92,6 @@ define( 'WP_DEBUG', true );
 
 /* Add any custom values between this line and the "stop editing" line. */
 
-/** Disable Post Revisions */
-define( 'WP_POST_REVISIONS', false );
-
-/** Empty trash. */
-define( 'EMPTY_TRASH_DAYS', 0 );
-
-/** Disable Post Revision. */
-define( 'AUTOSAVE_INTERVAL', 14400 );
-
 /** Disable the Theme and Plugin Editors */
 define( 'DISALLOW_FILE_EDIT', true );
 

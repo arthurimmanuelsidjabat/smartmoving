@@ -8,6 +8,7 @@ AOS.init();
     centeredSlides: false,
     centerInsufficientSlides: true,
     slidesPerView: 5,
+    spaceBetween: 30,
     mode: 'horizontal',
     grabCursor: true,
     loop: true,
@@ -19,15 +20,18 @@ AOS.init();
     breakpoints: {
       // when window width is >= 320px
       320: {
-        slidesPerView: 1,
+        slidesPerView: 2.5,
+        spaceBetween: 12,
       },
       // when window width is >= 480px
       720: {
         slidesPerView: 3,
+        spaceBetween: 20,
       },
       // when window width is >= 640px
       840: {
         slidesPerView: 5,
+        spaceBetween: 30,
       }
     },
   });

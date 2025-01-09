@@ -15,7 +15,7 @@
 <section class="firebase-faq right section-spacing bg-white {{ block.className }}">
 	<div class="container mx-auto text-center mb-8">
 		{% if fields.title %}
-		<h2 class="font-header text-4xl mb-4">{{fields.title}}</h2>
+		<h2 class="font-header text-4xl lg:text-5xl mb-4">{{fields.title}}</h2>
 		{% endif %}
 		{% if fields.subtitle %}
 		<p class="content-wrap flex flex-col w-full md:w-11/12 lg:w-7/12 mx-auto">{{fields.subtitle}}</p>
@@ -42,10 +42,10 @@
 </section>
 {% endif %}
 {% if fields.faq_version == 'ver2' %}
-<section class="firebase-faq right section-spacing-medium bg-white {{ block.className }}">
+<section class="firebase-faq right section-spacing bg-white {{ block.className }}">
 	<div class="container mx-auto text-center mb-8">
 		{% if fields.title %}
-		<h2 class="font-header text-4xl mb-4">
+		<h2 class="font-header text-4xl lg:text-5xl mb-4">
 			{{fields.title}}</h2>
 		{% endif %}
 		{% if fields.subtitle %}
@@ -53,7 +53,7 @@
 			{{fields.subtitle}}</h3>
 		{% endif %}
 	</div>
-	<div class="questions-wrapper container xl:w-8/12 md:mx-auto mx-3 grid grid-cols-1 gap-6 py-8">
+	<div class="questions-wrapper container mx-auto grid grid-cols-1 gap-6 py-8 xl:w-8/12">
 		{% for faq in fields.faq_row %}
 		<article class="content dd text-core" data-no="{{loop.index}}">
 			<div class="questions  cursor-pointer flex justify-between items-center border-b-4 border-primary p-3 text-core mb-1 active"
@@ -64,7 +64,7 @@
 				</div>
 				<div class="icons w-auto text-right">
 					<img src="{{ site.theme.link }}/images/icons/angle-down.svg" title="Arrow Down" alt="Arrow Down"
-						class="icon tr-smooth injectable w-9 h-9 p-[6px] bg-header rounded-full fill-primary ml-auto inline-block {% if loop.first %}rotate-180{% endif %}">
+						class="icon tr-smooth injectable w-9 h-9 p-[6px] bg-primary rounded-full fill-secondary ml-auto inline-block {% if loop.first %}rotate-180{% endif %}">
 				</div>
 
 			</div>

@@ -31,7 +31,7 @@
 		<div class="logos w-full overflow-hidden">
 			<div class="swiper-wrapper">
 				{% for logos in fields.logos %}
-				<div class="swiper-slide w-full mb-8 md:mb-4 lg:mb-0">
+				<div class="swiper-slide w-full lg:mb-0">
 					{% if logos.link %}
 					<a href="{{ logos.link.url }}" target="_blank">
 						<img class="h-20 w-full object-contain grayscale-[20%]" title="{{ logos.image.title }}"
