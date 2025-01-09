@@ -1,0 +1,47 @@
+{#
+  Title: Slider
+  Description: A custom slider section.
+  Category: formatting
+  Icon: leftright
+  Keywords: about
+  Mode: edit
+  Align: left
+  PostTypes: page post
+  SupportsAlign: left right
+  SupportsMode: true
+  SupportsMultiple: true
+#}
+
+<section class="firebase-slider section-spacing {{ block.className }}">
+	<article class="container mx-auto flex flex-wrap text-center">
+		{% if fields.upper_title and fields.title %}
+		<div class="w-full flex flex-col text-center pb-1 mb-4 lg:mb-12">
+			<h3 class="font-header tracking-wider text-gray uppercase mb-4">{{ fields.upper_title }}</h3>
+			<h2 class="font-header text-4xl lg:text-5xl">{{ fields.title}}</h2>
+		</div>
+		{% else %}
+		{% if fields.upper_title %}
+		<h3 class="font-header tracking-wider text-gray uppercase mb-2">{{ fields.upper_title }}</h3>
+		{% endif %}
+		{% if fields.title %}
+		<h2 class="font-header text-4xl mb-8">{{ fields.title}}</h2>
+		{% endif %}
+	{% endif %}
+	</article>
+	<div class="slider h-[450px] w-full overflow-hidden" data-aos="fade-up" data-aos-offset="-350" data-aos-delay="150"
+		data-aos-duration="350" data-aos-once="true">
+		<div class="swiper-wrapper">
+			{% for slider in fields.slider %}
+			<div class="swiper-slide w-full mb-8 md:mb-4 lg:mb-0 border-y-4 border-primary">
+				<figure class="w-full h-full">
+				<a href="{{ slider.image.url }}" data-fancybox="gallery">
+					<img class="h-[450px] w-auto object-cover responsive-image" src="{{ slider.image.url }}"
+						alt="{{ slider.image.alt }}" title="{{ slider.image.alt }}">
+						</a>
+				</figure>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
+</section>

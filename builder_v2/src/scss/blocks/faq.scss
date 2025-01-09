@@ -1,0 +1,12 @@
+.premiermovers-faq {
+    .v2{
+        .openSlide  {
+            @apply bg-light;
+        }
+        .icons {
+            &.rotate {
+                @apply rotate-180;
+            }
+        }
+    }
+}

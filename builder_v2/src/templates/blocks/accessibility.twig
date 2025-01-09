@@ -1,0 +1,39 @@
+{#
+  Title: Privacy Policy
+  Description: Prefilled Privacy Policy Block
+  Category: formatting
+  Icon: editor-alignleft
+  Keywords: about
+  Mode: edit
+  Align: left
+  PostTypes: page post
+  SupportsAlign: left right
+  SupportsMode: true
+  SupportsMultiple: true
+#}
+
+<section class="firebase-accessibility section-spacing {{ block.className }}">
+	<div class="container mx-auto text-left">
+		{% if fields.title %}
+			<h2 class="font-header text-4xl lg:text-5xl mb-8">
+				{{fields.title}}</h2>
+		{% endif %}
+		<div class="content-wrap mb-8">
+			{% if fields.description %}
+				{{fields.description}}
+			{% else %}
+				<div>
+					<p>{{ site.title }}
+						is committed to ensuring that individuals with disabilities have access to our goods and services, including those offered through our website,
+						{{ site.link }}. As such, we strive to adhere to the Web Content Accessibility Guidelines 2.0 and 2.1 Levels A and AA, a set of guidelines developed by the World Wide Web Consortium and used to ensure that digital content is accessible to everyone. We also work with accessibility and usability consultants to make sure that our website functions properly.</p>
+
+					<p>We are always learning and looking for ways to improve accessibility, and we welcome comments on how we may enhance the user experience on our website. Please be aware that our efforts are ongoing.</p>
+
+					<p>If you have any feedback or questions regarding our website, please
+						<a href="{{ site.link }}/contact-us" class="text-primary">contact us.</a>
+					</p>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+</section>

@@ -1,0 +1,14 @@
+.firebase-contact_v1 {
+    &--title{
+        position: relative;
+        &::before {
+            @apply bg-white;
+            content: '';
+            height: 2px;
+            width: 30px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+    }
+}

@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+$sm: 640px;
+$md: 768px;
+$lg: 1024px;
+$xl: 1280px;
+$xxl: 1536px;
+
+@import 'plugins/swiper';
+
+@import 'components/fonts';
+@import 'components/colors';
+@import 'components/images';
+@import 'components/typography';
+@import 'components/buttons';
+@import 'components/spacing';
+@import 'components/grid';
+@import 'components/menu';
+@import 'components/mobile';
+@import 'components/responsive';
+@import 'components/transitions';
+@import 'components/extras';
+@import 'components/forms';
+@import 'components/wpadmin';
+
+@import 'core/core';
+
+@import 'blocks/google-rating';
+@import 'blocks/main_banner';
+@import 'blocks/banner';
+@import 'blocks/services';
+@import 'blocks/reputation';
+@import 'blocks/testimonials';
+@import 'blocks/process';
+@import 'blocks/sidebaraside';
+@import 'blocks/faq';
+
+
+
+@import 'blocks/review';
+@import 'blocks/about';
+@import 'blocks/offer';
+@import 'blocks/contact';
+@import 'blocks/footer';
+

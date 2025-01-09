@@ -1,0 +1,37 @@
+// EXTRAS
+.underline-primary {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -0.3rem;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        @apply bg-primary;
+    }
+
+    &_short {
+        @extend .underline-primary;
+
+        &::after {
+            @apply left-1/4;
+            width: 50%;
+            max-width: 180px;
+            left: 25%;
+            @screen lg{
+                left: 0;
+            }
+        }
+    }
+
+    &_short_light {
+        @extend .underline-primary;
+
+        &::after {
+            width: 50%;
+            @apply bg-primary/40;
+        }
+    }
+}

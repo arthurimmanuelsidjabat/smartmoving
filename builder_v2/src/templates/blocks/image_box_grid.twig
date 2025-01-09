@@ -1,0 +1,56 @@
+{#
+  Title: Image Box Grid
+  Description: A grid section with image boxes.
+  Category: formatting
+  Icon: format-image
+  Keywords: about
+  Mode: edit
+  Align: left
+  PostTypes: page post
+  SupportsAlign: left right
+  SupportsMode: true
+  SupportsMultiple: true
+#}
+
+<section class="firebase-imagebox section-spacing bg-white {{ block.className }}">
+	{% if fields.upper_title and fields.title %}
+	<div class="container mx-auto flex flex-col text-center pb-1 lg:mb-8">
+		<h3 class="font-header tracking-wider text-gray uppercase mb-2">{{ fields.upper_title }}</h3>
+		<h2 class="font-header text-4xl lg:text-5xl mb-8">{{ fields.title}}</h2>
+	</div>
+	{% else %}
+	{% if fields.upper_title %}
+	<h3 class="font-header tracking-wider text-gray uppercase mb-2">{{ fields.upper_title }}</h3>
+	{% endif %}
+	{% if fields.title %}
+	<h2 class="font-header text-4xl mb-8">{{ fields.title}}</h2>
+	{% endif %}
+	{% endif %}
+	{% if fields.box %}
+	<div class="container mx-auto flex mt-8">
+		<div class="grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+			{% for item in fields.box %}
+			<article class="text-center bg-white mx-auto" data-aos="fade-up" data-aos-offset="150"
+				data-aos-delay="{{loop.index}}50" data-aos-duration="2*{{loop.index}}50" data-aos-once="true">
+				{% if item.image.url %}
+				<img src="{{ item.image.url }}" class="h-[380px] rounded-2xl w-auto image-cover mx-auto mb-12"
+					title="{{ item.image.title }}" alt="{{ item.image.alt }}">
+				{% endif %}
+				{% if item.title %}
+				<h3 class="text-2xl font-header pb-2 mb-2">{{item.title}}
+				</h3>
+				{% endif %}
+				{% if item.description %}
+				<div class="text-normal leading-relaxed">{{item.description}}</div>
+				{% endif %}
+				{% if item.button.url %}
+				<a href="{{ item.button.url}}"
+					class="btn-primary flex items-center mx-auto font-medium uppercase text-primary fill-primary w-content tracking-wider text-center mb-4">{{item.button.title}}
+				</a>
+				{% endif %}
+			</article>
+			{% endfor %}
+		</div>
+	</div>
+	{% endif %}
+</section>

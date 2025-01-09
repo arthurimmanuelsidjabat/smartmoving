@@ -1,0 +1,65 @@
+{#
+  Title: Icon Box Aside
+  Description: A grid section with icon boxes.
+  Category: formatting
+  Icon: align-left
+  Keywords: about
+  Mode: edit
+  Align: left
+  PostTypes: page post
+  SupportsAlign: left right
+  SupportsMode: true
+  SupportsMultiple: true
+#}
+
+<section class="firebase-iconboxaside section-spacing bg-white {{ block.className }}">
+	<div class="container mx-auto flex flex-row flex-wrap">
+		<div class="content-box w-full lg:w-4/12">
+			{% if fields.upper_title and fields.title %}
+			<div class="flex flex-col text-center lg:text-left pb-1 mb-4 lg:mb-12">
+				<h3 class="font-header tracking-wider text-gray uppercase mb-4">{{ fields.upper_title }}</h3>
+				<h2 class="font-header text-4xl lg:text-5xl">{{ fields.title}}</h2>
+			</div>
+			{% else %}
+			{% if fields.upper_title %}
+			<h3 class="font-header tracking-wider text-gray uppercase mb-2">{{ fields.upper_title }}</h3>
+			{% endif %}
+			{% if fields.title %}
+			<h2 class="font-header text-4xl mb-8">{{ fields.title}}</h2>
+			{% endif %}
+			{% endif %}
+			<div
+				class="md:w-11/12 content-wrap leading-relaxed flex text-center mx-auto lg:ml-0 lg:text-left flex-col w-full">
+				{{fields.content}}
+				{% if fields.button %}
+				<a href="{{fields.button.url}}" class="hidden lg:block btn btn-primary mt-4">{{fields.button.title}}</a>
+				{% endif %}
+			</div>
+		</div>
+		{% if fields.box %}
+		<div class="w-full lg:w-7/12 lg:ml-auto flex mt-8">
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+				{% for item in fields.box %}
+				<article class="text-center lg:text-left bg-white mx-auto" data-aos="fade-in" data-aos-offset="150"
+					data-aos-delay="{{loop.index}}50" data-aos-duration="2*{{loop.index}}50" data-aos-once="true">
+					{% if item.icon.url %}
+					<img src="{{ item.icon.url }}" class="injectable w-12 h-12 fill-primary mx-auto lg:ml-0 mb-4"
+						title="{{ item.icon.title}}" alt="{{ item.icon.alt}}">
+					{% endif %}
+					{% if item.title %}
+					<h3 class="text-2xl font-header mb-2">{{item.title}}
+					</h3>
+					{% endif %}
+					{% if item.description %}
+					<div class="text-normal leading-relaxed">{{item.description}}</div>
+					{% endif %}
+				</article>
+				{% endfor %}
+			</div>
+		</div>
+		{% endif %}
+		{% if fields.button %}
+		<a href="{{fields.button.url}}" class="block lg:hidden mx-auto btn btn-primary mt-4">{{fields.button.title}}</a>
+		{% endif %}
+	</div>
+</section>

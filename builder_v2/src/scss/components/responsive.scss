@@ -1,0 +1,26 @@
+// Small device
+
+.container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+// Medium device
+@screen md {}
+
+// Large device 
+@screen lg {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+// Extra Large device
+@screen xl {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+}

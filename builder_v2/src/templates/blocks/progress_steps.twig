@@ -1,0 +1,50 @@
+{#
+  Title: Progress Steps
+  Description: Progress Steps Section.
+  Category: formatting
+  Icon: clock
+  Keywords: about
+  Mode: edit
+  Align: left
+  PostTypes: page post
+  SupportsAlign: left right
+  SupportsMode: true
+  SupportsMultiple: true
+#}
+<section class="firebase-progress section-spacing bg-white {{ block.className }}">
+	{% if fields.upper_title and fields.title %}
+	<div class="container mx-auto flex flex-col text-center pb-1 mb-10">
+		<h3 class="font-header tracking-wider text-gray uppercase mb-2">{{ fields.upper_title }}</h3>
+		<h2 class="font-header text-4xl lg:text-5xl mb-8">{{ fields.title}}</h2>
+	</div>
+	{% else %}
+	{% if fields.upper_title %}
+	<h3 class="font-header tracking-wider text-gray uppercase mb-2">{{ fields.upper_title }}</h3>
+	{% endif %}
+	{% if fields.title %}
+	<h2 class="font-header text-4xl mb-8">{{ fields.title}}</h2>
+	{% endif %}
+	{% endif %}
+	{% if fields.box %}
+	<div class="container mx-auto flex mt-[4rem]">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+			{% for item in fields.box %}
+			<article class="text-center bg-light p-6 rounded-2xl mx-auto" data-aos="fade-up" data-aos-offset="150"
+				data-aos-delay="{{loop.index}}50" data-aos-duration="2*{{loop.index}}50" data-aos-once="true">
+				<div
+					class="h-16 w-16 border-8 border-white flex justify-center items-center mx-auto bg-primary rounded-full -mt-[4rem] mb-12">
+					<span class="text-3xl font-header text-white">{{ loop.index }}</span>
+				</div>
+				{% if item.title %}
+				<h3 class="text-2xl font-header pb-2 mb-4">{{item.title}}
+				</h3>
+				{% endif %}
+				{% if item.description %}
+				<div class="text-normal leading-relaxed">{{item.description}}</div>
+				{% endif %}
+			</article>
+			{% endfor %}
+		</div>
+	</div>
+	{% endif %}
+</section>

@@ -1,0 +1,32 @@
+{#
+  Title: Mainform
+  Description: Main Form Section
+  Category: Firebase-blocks
+  Icon: email
+  Keywords: infolist
+  Mode: edit
+  Align: left
+  PostTypes: page post
+  SupportsAlign: left right
+  SupportsMode: true
+  SupportsMultiple: true
+#}
+
+
+<section class="firebase-mainform section-spacing bg-white {{ block.className }}">
+	<div class="container mx-auto flex flex-col text-center pb-2">
+		{% if fields.upper_title %}
+		<h3 class="font-header tracking-wider text-gray uppercase mb-2">{{ fields.upper_title }}</h3>
+		{% endif %}
+		{% if fields.title %}
+		<h2 class="font-header text-4xl lg:text-5xl mb-4">{{ fields.title }}</h2>
+		{% endif %}
+		{% if fields.subtitle %}
+		<p class="w-11/12 mx-auto text-lg text-gray font-normal pb-10">{{ fields.subtitle }}</p>
+		{% endif %}
+	</div>
+	<div class="w-auto md:w-10/12 lg:w-8/12 xl:w-6/12 mx-4 md:mx-auto shadow-2xl rounded-2xl bg-white p-10"
+		data-aos="fade-up" data-aos-offset="-350" data-aos-delay="150" data-aos-duration="350" data-aos-once="true">
+		{{fn('do_shortcode', fields.mainform_shortcode|striptags)}}
+	</div>
+</section>

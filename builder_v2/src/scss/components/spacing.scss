@@ -1,0 +1,17 @@
+.section-spacing {
+    padding-top: 55px;
+    padding-bottom: 55px;
+
+    @screen md {
+        padding-top: 70px;
+        padding-bottom: 70px;  
+    }
+    @screen lg {
+        padding-top: 80px;
+        padding-bottom: 80px;  
+    }
+    &.pb-0 {
+        padding-bottom: 0 !important;
+    }
+
+}
