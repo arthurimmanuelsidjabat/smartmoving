@@ -1,0 +1,44 @@
+{#
+  Title: Two Column Text
+  Description: A text on two columns layouts
+  Category: formatting
+  Icon: columns
+  Keywords: about
+  Mode: edit
+  Align: left
+  PostTypes: page post
+  SupportsAlign: left right
+  SupportsMode: true
+  SupportsMultiple: true
+#}
+
+<section class="firebase-columntext section-spacing {{ block.className }}">
+	<article class="container flex mx-auto flex flex-wrap text-center lg:text-left">
+		<div class="w-full lg:w-6/12">
+			{% if fields.tagline %}
+			<h4 class="font-header tracking-wider text-gray uppercase mb-2">
+				{{fields.tagline}}</h4>
+			{% endif %}
+			{% if fields.title %}
+			<h2 class="font-header text-4xl lg:text-5xl mb-4">
+				{{fields.title}}</h2>
+			{% endif %}
+			{% if fields.subtitle %}
+			<h3 class="lg:w-11/12 text-xl text-gray mb-4">
+				{{fields.subtitle}}</h3>
+			{% endif %}
+			{% if fields.button %}
+			<a href="{{fields.button.url}}" class="hidden lg:block btn btn-primary mt-4" data-aos="fade-in"
+				data-aos-offset="150" data-aos-delay="350" data-aos-duration="750"
+				data-aos-once="true">{{fields.button.title}}</a>
+			{% endif %}
+		</div>
+		<div class="content-wrap flex flex-col mx-auto w-full md:w-11/12 lg:w-6/12">
+			{{fields.description}}
+			{% if fields.button %}
+			<a href="{{fields.button.url}}"
+				class="block lg:hidden mx-auto btn btn-primary mt-4">{{fields.button.title}}</a>
+			{% endif %}
+		</div>
+	</article>
+</section>

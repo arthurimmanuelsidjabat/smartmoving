@@ -1,0 +1,54 @@
+{#
+  Title: Icon Box Grid
+  Description: A grid section with icon boxes.
+  Category: formatting
+  Icon: grid-view
+  Keywords: about
+  Mode: edit
+  Align: left
+  PostTypes: page post
+  SupportsAlign: left right
+  SupportsMode: true
+  SupportsMultiple: true
+#}
+
+<section class="firebase-iconbox section-spacing bg-white {{ block.className }}">
+	{% if fields.upper_title and fields.title %}
+	<div class="container mx-auto flex flex-col text-center pb-1 mb-8">
+		<h3 class="font-header tracking-wider text-gray uppercase mb-2">{{ fields.upper_title }}</h3>
+		<h2 class="font-header text-4xl lg:text-5xl mb-8">{{ fields.title}}</h2>
+	</div>
+	{% else %}
+	{% if fields.upper_title %}
+	<h3 class="font-header tracking-wider text-gray uppercase mb-2">{{ fields.upper_title }}</h3>
+	{% endif %}
+	{% if fields.title %}
+	<h2 class="font-header text-4xl mb-8">{{ fields.title}}</h2>
+	{% endif %}
+	{% endif %}
+	{% if fields.box %}
+	<div class="container mx-auto mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+		{% for item in fields.box %}
+		<article class="text-center bg-white relative mx-auto" data-aos="fade-up" data-aos-offset="150"
+			data-aos-delay="{{loop.index}}50" data-aos-duration="2*{{loop.index}}50" data-aos-once="true">
+			{% if item.icon.url %}
+			<img src="{{ item.icon.url }}" title="{{ item.icon.title }}" alt="{{ item.icon.alt }}"
+				class="injectable w-12 h-12 fill-primary mx-auto mb-6 lg:mb-12">
+			{% endif %}
+			{% if item.title %}
+			<h3 class="text-2xl font-header pb-2 mb-4">{{item.title}}
+			</h3>
+			{% endif %}
+			{% if item.description %}
+			<div class="text-normal leading-relaxed">{{item.description}}</div>
+			{% endif %}
+			{% if item.button %}
+			<a href="{{ item.button.url}}"
+				class="btn-primary flex items-center mx-auto font-medium uppercase text-primary fill-primary w-content tracking-wider text-center mb-4">{{item.button.title}}
+			</a>
+			{% endif %}
+		</article>
+		{% endfor %}
+	</div>
+	{% endif %}
+</section>

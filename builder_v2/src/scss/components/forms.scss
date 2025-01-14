@@ -1,0 +1,62 @@
+// overlays
+.firebase-mainform {
+        .choices__list--dropdown {
+            overflow-y: hidden;
+            text-align: left;
+        }
+
+        .fluentform .ff-el-form-control,
+        .frm-fluent-form .choices__inner {
+            @apply border-stone-300 text-gray w-11/12 mx-auto;
+            background: transparent;
+            border-top: none;
+            border-right: none;
+            border-left: none;
+            border-bottom: 1px solid;
+        }
+        .ff-el-form-control {
+        @apply bg-white text-gray;
+        border-radius: 0 !important;
+        padding: .6rem 1rem;
+        }
+}
+
+
+.fluentform {
+    .ff-el-group {
+        @apply mb-4;
+    }
+    .ff-el-form-control {
+        @apply bg-white text-gray rounded-3xl;
+        padding: .6rem 1rem;
+    }
+    .ff-el-form-control:not([size]):not([multiple]) {
+        height: 2.7rem !important;
+        border-radius: 0;
+    }
+
+    .ff_submit_btn_wrapper {
+        @apply text-center;
+        margin-bottom: 0 !important;
+
+        .btn {
+            @apply font-medium;
+            margin-bottom: 0;
+            width: auto;
+        }
+    }
+// Multi step
+    .step-nav {
+        .ff-btn {
+            @extend .btn;
+        }
+        .ff-btn-next, .ff-btn-prev {
+            @apply bg-dark;
+        }
+
+    }
+    .ff-el-progress-bar {
+        @apply bg-primary #{!important};
+    }
+}
+

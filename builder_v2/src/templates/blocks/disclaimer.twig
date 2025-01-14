@@ -1,0 +1,48 @@
+{#
+  Title: Privacy Policy
+  Description: Prefilled Privacy Policy Block
+  Category: formatting
+  Icon: editor-alignleft
+  Keywords: about
+  Mode: edit
+  Align: left
+  PostTypes: page post
+  SupportsAlign: left right
+  SupportsMode: true
+  SupportsMultiple: true
+#}
+
+<section class="firebase-disclaimer section-spacing {{ block.className }}">
+	<div class="container mx-auto text-left">
+		{% if fields.title %}
+			<h2 class="font-header text-4xl lg:text-5xl mb-8">
+				{{fields.title}}</h2>
+		{% endif %}
+		<div class="content-wrap mb-8">
+			{% if fields.description %}
+				{{fields.description}}
+			{% else %}
+				<div>
+					This Website {{ site.link }} (the “<strong>Website</strong>”) is property of {{ site.title }} (hereafter to be named “{{ site.title }}”).<br> {{ site.title }} is registered at:
+				    {{ global.footer.contact_us.adress_block.adress }}
+					<h3 class="py-4 text-2xl font-header">General</h3>
+					The following is applicable to the Website. By using the Website you agree with this disclaimer.
+					<h3 class="py-4 text-2xl font-header">Content Website</h3>
+					{{ site.title }} reserves the right to alter the contents of the Website and this disclaimer at any time or remove it without having any obligation to notify you thereof.
+					
+					{{ site.title }} puts care and attention to the content of the Website. However the use of (information on) the Website is at your own risk. Despite our efforts, it may occur that the content of the Website is incomplete, outdated and/or incorrect. Therefore the content of the Website is provided to you without any form of guarantee or liability on its accuracy.
+					
+					All prices displayed at the Website are subject to obvious mistakes for example caused by incorrect entries or technical problems. {{ site.title }} is not liable for the consequences of such errors. On the basis of such errors, no agreement will be concluded between you and {{ site.title }}.
+					<h3 class="py-4 text-2xl font-header">Liability</h3>
+					{{ site.title }} is not liable for any damage or other harmful consequences by the use of (information on) the Website. It is at your own risk if you undertake any action based on (the information of) our Website. No agreement will be concluded between you and {{ site.title }} on the basis of obvious mistakes and/or incomplete or outdated information.
+					
+					{{ site.title }} is not liable if the Website is not accessible or available due to malfunction (storing) and is not responsible or liable for malfunctions in networks of third parties, by means of which the access to the Website is obtained. In addition, {{ site.title }} is not liable for any content of the Website which is provided by third parties.
+					<h3 class="py-4 text-2xl font-header">Intellectual Property</h3>
+					All intellectual property rights with respect to the Website remain with {{ site.title }}. Without the prior written consent of {{ site.title }} it is not allowed to disclose, multifold, save or offer for sale (parts of) the Website, information on the Website or other material displayed on the Website, in any possible way.
+					<h3 class="py-4 text-2xl font-header">Contact</h3>
+					Should you have any further questions and/or comments in relation to this disclaimer, you can contact {{ site.title }} via <a href="{{ global.footer.contact_us.email_block.email.url }}">{{ global.footer.contact_us.email_block.email.title }}</a>.
+				</div>
+			{% endif %}
+		</div>
+	</div>
+</section>

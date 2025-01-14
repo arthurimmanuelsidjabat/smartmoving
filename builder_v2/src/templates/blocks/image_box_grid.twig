@@ -1,0 +1,58 @@
+{#
+  Title: Image Box Grid
+  Description: A grid section with image boxes.
+  Category: formatting
+  Icon: format-image
+  Keywords: about
+  Mode: edit
+  Align: left
+  PostTypes: page post
+  SupportsAlign: left right
+  SupportsMode: true
+  SupportsMultiple: true
+#}
+
+<section class="firebase-imagebox relative section-spacing {{ block.className }}">
+	{% if fields.upper_title and fields.title %}
+	<div class="container mx-auto flex flex-col text-center pb-1 lg:mb-8">
+		<h3 class="font-header tracking-wider text-gray uppercase mb-2">{{ fields.upper_title }}</h3>
+		<h2 class="font-header text-4xl lg:text-5xl mb-8">{{ fields.title}}</h2>
+	</div>
+	{% else %}
+	{% if fields.upper_title %}
+	<h3 class="font-header tracking-wider text-gray uppercase mb-2">{{ fields.upper_title }}</h3>
+	{% endif %}
+	{% if fields.title %}
+	<h2 class="font-header text-4xl mb-8">{{ fields.title}}</h2>
+	{% endif %}
+	{% endif %}
+	{% if fields.box %}
+	<div class="container mx-auto flex mt-8">
+		<div class="flex flex-wrap justify-center gap-y-12 md:-mx-4 lg:-mx-8">
+			{% for item in fields.box %}
+			<article class="flex flex-col w-full bg-white sm:w-4/12 sm:px-4 sm:text-center" data-aos="fade-up" data-aos-offset="150"
+				data-aos-delay="{{loop.index}}50" data-aos-duration="2*{{loop.index}}50" data-aos-once="true">
+				{% if item.image.url %}
+				<img src="{{ item.image.url }}" class="w-full h-[200px] rounded-2xl w-auto image-cover mx-auto mb-5 sm:mb-12 md:h-[380px]"
+					title="{{ item.image.title }}" alt="{{ item.image.alt }}">
+				{% endif %}
+				<div class="flex flex-col flex-auto">
+					{% if item.title %}
+					<h3 class="text-2xl font-header pb-2 mb-2">{{item.title}}
+					</h3>
+					{% endif %}
+					{% if item.description %}
+					<div class="text-normal leading-relaxed">{{item.description}}</div>
+					{% endif %}
+				</div>
+				{% if item.button.url %}
+				<a href="{{ item.button.url}}"
+					class="btn-primary flex items-center mx-auto font-medium uppercase text-primary fill-primary w-content tracking-wider text-center mb-4">{{item.button.title}}
+				</a>
+				{% endif %}
+			</article>
+			{% endfor %}
+		</div>
+	</div>
+	{% endif %}
+</section>

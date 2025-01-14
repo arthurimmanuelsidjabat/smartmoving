@@ -1,0 +1,56 @@
+{#
+  Title: Sidebar Aside
+  Description: Content with sidebar
+  Category: formatting
+  Icon: align-left
+  Keywords: sidebar
+  Mode: edit
+  Align: left
+  PostTypes: page post
+  SupportsAlign: left right
+  SupportsMode: true
+  SupportsMultiple: true
+#}
+<section class="firebase-sidebar-aside section-spacing">
+	{% if fields.page_title %}
+		<div class="container mx-auto mb-10">
+			<h1 class="font-header text-4xl font-semibold">{{fields.page_title}}</h1>
+		</div>
+	{% endif %}
+	<div class="container mx-auto flex flex-row flex-wrap">
+		<div class="main-content w-full lg:w-8/12 pr-4">
+			{% for row in fields.content_row %}
+				<div class="mb-4">
+					{% if row.title %}
+						<h2 class='font-header text-3xl mb-4'>{{row.title}}</h2>
+					{% endif %}
+					{% if row.content %}
+						{{row.content}}
+					{% endif %}
+				</div>
+			{% endfor %}
+		</div>
+		<aside class="sidebar flex-col w-full h-fit lg:w-[20rem] lg:mx-auto">
+			<div class="menu-wrapper px-8 py-10 bg-primary text-light rounded-2xl mb-12" data-aos="fade-left" data-aos-offset="-150" data-aos-delay="250" data-aos-duration="550" data-aos-once="true">
+				{% for row in fields.sidebar_row %}
+					{% if row.menu_title %}
+						<h3 class="font-header text-2xl mb-4">{{row.menu_title}}</h3>
+					{% endif %}
+					{% if row.menu %}
+						{{row.menu}}
+					{% endif %}
+				{% endfor %}
+			</div>
+			<div class="form-wrapper px-8 py-10 mb-8 bg-light text-primary rounded-2xl border-primary border-2" data-aos="fade-left" data-aos-offset="-150" data-aos-delay="450" data-aos-duration="650" data-aos-once="true">
+				{% for row in fields.sidebar_row %}
+					{% if row.form_code %}
+						{% if row.form_title %}
+							<h3 class="font-header text-2xl mb-4">{{row.form_title}}</h3>
+						{% endif %}
+						{{ fn('do_shortcode', row.form_code|striptags) }}
+					{% endif %}
+				{% endfor %}
+			</div>
+		</aside>
+	</div>
+</section>

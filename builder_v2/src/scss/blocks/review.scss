@@ -1,0 +1,182 @@
+.firebase-review {
+    .review-item {
+        min-height: 250px;
+        transition: all .3s;
+        text-align: center;
+        margin: 3rem 0;
+
+        img {
+            position: absolute;
+            top: -6rem;
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            transition: all .3s;
+            z-index: 5;
+        }
+
+        .review-item__details {
+            min-height: 250px;
+            position: relative;
+            top: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            padding: 1rem 1rem 2rem;
+
+            .review-item__desc {
+                @apply text-primary;
+                z-index: 10;
+                left: 0;
+                padding: 0 1rem;
+                transition: all .3s ease-in-out;
+            }
+
+            &::before {
+                transition: all .3s;
+                opacity: 0;
+                position: absolute;
+                content: '';
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                display: block;
+                left: 0rem;
+                top: 0rem;
+            }
+        }
+        .quote {
+            top: -3.5rem;
+            @screen lg {
+             top: -2rem;
+            }
+        }
+
+
+
+        &:hover {
+            img {
+                top: -9.5rem;
+                @screen md {
+                    top: -7.5rem;
+                }
+            }
+        }
+
+    }
+}
+
+.firebase-review_v3 {
+
+    .firebase-review__wrap {
+        .firebase-review__img {
+            -webkit-filter: grayscale(1);
+            filter: grayscale(1);
+            -webkit-transition: all 350ms ease;
+            -moz-transition: all 350ms ease;
+            -ms-transition: all 350ms ease;
+            -o-transition: all 350ms ease;
+            transition: all 350ms ease;
+        }
+
+        .firebase-review__social {
+            visibility: hidden;
+
+            a{
+                @apply text-gray;
+                text-decoration: none;
+                display: inline-block;
+                margin-top: 13px;
+                font-size: 15px;
+                opacity: 0;
+                visibility: hidden;
+                -webkit-transition: all 350ms ease;
+                -moz-transition: all 350ms ease;
+                -ms-transition: all 350ms ease;
+                -o-transition: all 350ms ease;
+                transition: all 350ms ease;
+                transition-delay: 0s;
+                &:nth-of-type(1) {
+                    transition-delay: 50ms !important;
+                }
+
+                &:nth-of-type(2) {
+                    transition-delay: 125ms !important;
+                }
+
+                &:nth-of-type(3) {
+                    transition-delay: 200ms;
+                }
+            }
+        }
+
+        .firebase-review__name {
+            position: relative;
+
+            &::before {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 1px;
+                @apply bg-gray;
+                -webkit-transition: all 450ms ease;
+                -moz-transition: all 450ms ease;
+                -ms-transition: all 450ms ease;
+                -o-transition: all 450ms ease;
+                transition: all 450ms ease;
+            }
+        }
+
+        -moz-transition: all 350ms ease;
+        -ms-transition: all 350ms ease;
+        -o-transition: all 350ms ease;
+        transition: all 350ms ease;
+
+        &:hover {
+
+            .firebase-review__img {
+                -webkit-filter: grayscale(0);
+                filter: grayscale(0);
+            }
+
+            .firebase-review__social {
+                a {
+                    position: relative;
+                    visibility: visible;
+                    opacity: 1;
+
+                    &:nth-of-type(1) {
+                        transition-delay: 50ms !important;
+                    }
+
+                    &:nth-of-type(2) {
+                        transition-delay: 125ms !important;
+                    }
+
+                    &:nth-of-type(3) {
+                        transition-delay: 200ms;
+                    }
+                }
+            }
+
+            .firebase-review__name {
+                &::before {
+                    width: 100%;
+                }
+            }
+
+
+        }
+    }
+}
+
+.firebase-review_v4, .firebase-review_v5{
+    .firebase-review__img {
+        transition: all .35s ease;
+        &:hover {
+            transform: scale(1.04);
+        }
+    }
+}

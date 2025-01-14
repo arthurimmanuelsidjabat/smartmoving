@@ -1,0 +1,8 @@
+.firebase-offer_v4 {
+    .icon-wrapper {
+        >:not(:first-child){
+            @apply border-black;
+            border-left: 1px solid;
+        } 
+    }
+}

@@ -1,0 +1,56 @@
+{#
+  Title: CTA
+  Description: Call To Action block
+  Category: Firebase-blocks
+  Icon: table-row-before
+  Keywords: offer
+  Mode: edit
+  Align: left
+  PostTypes: page post
+  SupportsAlign: left right
+  SupportsMode: true
+  SupportsMultiple: true
+#}
+
+<section class="firebase-cta section-spacing h-auto w-full px-10 relative bg-primary {{ block.className }}"
+	{# Background settings #} {% if fields.cta_background %}
+	style="background-image: url('{{fields.cta_background.url}}'); background-size: cover; background-position: center; background-repeat: no-repeat;"
+	{% endif %}>
+	{# Overlay #}
+	{% if fields.options.overlay %}
+	<div class="overlay"
+		style="background-color:{{fields.options.overlay_color}}; opacity:{{fields.options.overlay_opacity}}; background-blend-mode: multiply;">
+	</div>
+	{% endif %}
+	<div
+		class="container mx-auto {% if fields.cta_layout %}flex flex-col{% else %}flex flex-col md:flex-row flex-wrap justify-center lg:justify-between{% endif %} py-10 text-center text-white">
+
+		{% if fields.cta_title and fields.cta_subtitle%}
+		<div
+			class="{% if fields.cta_layout %}text-center mb-8{% else %}text-center lg:text-left mb-4 lg:mb-0{% endif %}">
+			{% if fields.cta_title %}
+			<h2 class="font-header text-4xl lg:text-5xl tracking-wider font-medium md:mr-6 mb-6 lg:mb-2">{{ fields.cta_title}}</h2>
+			{% endif %}
+			{% if fields.cta_subtitle %}
+			<h3 class="text-xl text-white mb-4">{{ fields.cta_subtitle}}</h3>
+			{% endif %}
+		</div>
+		{% else %}
+		{% if fields.cta_title %}
+		<h2 class="font-header text-4xl lg:text-5xl tracking-wider font-medium md:mr-6 mb-6 lg:mb-2">{{ fields.cta_title}}</h2>
+		{% endif %}
+		{% if fields.cta_subtitle %}
+		<h3 class="text-xl text-center lg:text-left text-white mb-4">{{ fields.cta_subtitle}}</h3>
+		{% endif %}
+		{% endif %}
+		{% for button in fields.cta_button %}
+		<a href="{{ button.btn_link.url}}"
+			class="{{ button.btn_style }} flex self-baseline w-content tracking-wider font-medium text-center {% if fields.cta_layout %}mx-auto{% else %} mx-auto lg:mr-0{% endif %}">
+			{% if button.icon %}<img src="{{button.icon.url}}" alt="{{button.icon.alt}}"
+				class="injectable inline-block fill-white h-5 w-5 mr-2">
+			{% endif %}
+			<span class='text-xl'>{{button.btn_link.title}}</span>
+		</a>
+		{% endfor %}
+	</div>
+</section>

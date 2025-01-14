@@ -1,0 +1,58 @@
+{#
+  Title: Image Progress Steps
+  Description: Image Progress Steps Section.
+  Category: formatting
+  Icon: backup
+  Keywords: about
+  Mode: edit
+  Align: left
+  PostTypes: page post
+  SupportsAlign: left right
+  SupportsMode: true
+  SupportsMultiple: true
+#}
+<section class="firebase-imageprogress section-spacing bg-white {{ block.className }}">
+	{% if fields.upper_title and fields.title %}
+	<div class="container mx-auto flex flex-col text-center pb-1 mb-10">
+		<h3 class="font-header tracking-wider text-gray uppercase mb-2">{{ fields.upper_title }}</h3>
+		<h2 class="font-header text-4xl lg:text-5xl mb-8">{{ fields.title}}</h2>
+	</div>
+	{% else %}
+	{% if fields.upper_title %}
+	<h3 class="font-header tracking-wider text-gray uppercase mb-2">{{ fields.upper_title }}</h3>
+	{% endif %}
+	{% if fields.title %}
+	<h2 class="font-header text-4xl mb-8">{{ fields.title}}</h2>
+	{% endif %}
+	{% endif %}
+	{% if fields.box %}
+	<div class="container mx-auto flex mt-[4rem]">
+		<div class="flex flex-col md:flex-row w-full">
+			{% for item in fields.box %}
+			<article class="text-center bg-white p-6 rounded-2xl mx-auto space-x-1.5">
+				<div class="w-20 h-20 lg:w-32 lg:h-32 mx-auto bg-primary rounded-full -mt-[4rem] mb-12"
+					data-aos="fade-up" data-aos-offset="150" data-aos-delay="{{loop.index}}50"
+					data-aos-duration="2*{{loop.index}}50" data-aos-once="true">
+					{% if item.icon.url %}
+					<img src="{{ item.icon.url }}" title="{{ item.icon.title }}" alt="{{ item.icon.alt }}"
+						class="injectable w-20 h-20 lg:w-32 lg:h-32 p-4 lg:p-8 fill-white mx-auto mb-12">
+					{% endif %}
+				</div>
+				{% if item.title %}
+				<h3 class="text-2xl font-header pb-2 mb-4">{{item.title}}
+				</h3>
+				{% endif %}
+				{% if item.description %}
+				<div class="text-normal leading-relaxed">{{item.description}}</div>
+				{% endif %}
+			</article>
+			{% if not loop.last %}
+			<img src="{{ site.theme.link }}/images/icons/arrow-right.svg" title="Arrow Right" alt="Arrow right icon"
+				class="hidden md:inline-block injectable w-14 h-14 fill-inherit">
+			{% endif %}
+			{% endfor %}
+
+		</div>
+	</div>
+	{% endif %}
+</section>

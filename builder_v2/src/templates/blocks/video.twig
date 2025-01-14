@@ -1,0 +1,43 @@
+{#
+  Title: Video
+  Description: Video Section
+  Category: formatting
+  Icon: video-alt
+  Keywords: sidebar
+  Mode: edit
+  Align: left
+  PostTypes: page post
+  SupportsAlign: left right
+  SupportsMode: true
+  SupportsMultiple: true
+#}
+<section class="rotatedigital-video section-spacing">
+	<article class="container mx-auto flex flex-col lg:flex-row items-center text-center">
+		<div class="w-full lg:w-6/12">
+			{% if fields.upper_title and fields.title %}
+			<div class="w-full flex flex-col text-center lg:text-left pb-1 mb-4 lg:mb-12">
+				<h3 class="font-header tracking-wider text-gray uppercase mb-4">{{ fields.upper_title }}</h3>
+				<h2 class="font-header text-4xl lg:text-5xl">{{ fields.title}}</h2>
+			</div>
+			{% else %}
+			{% if fields.upper_title %}
+			<h3 class="font-header tracking-wider text-gray uppercase mb-2">{{ fields.upper_title }}</h3>
+			{% endif %}
+			{% if fields.title %}
+			<h2 class="font-header text-4xl mb-8">{{ fields.title}}</h2>
+			{% endif %}
+			{% endif %}
+			{% if fields.description %}
+			<div
+				class="md:w-11/12 content-wrap leading-relaxed flex text-center mx-auto lg:ml-0 lg:text-left flex-col w-full">
+				{{fields.description}}
+			</div>
+			{% endif %}
+		</div>
+		<div class="video-wrapper w-full lg:w-6/12 h-[450px] rounded-2xl" data-aos="fade-left" data-aos-offset="-250"
+			data-aos-delay="250" data-aos-duration="550" data-aos-once="true">
+			<iframe src="{{fields.video_url}}" frameborder="0" modestbranding allowfullscreen controls="0"
+				class="h-full w-full aspect-video"></iframe>
+		</div>
+	</article>
+</section>

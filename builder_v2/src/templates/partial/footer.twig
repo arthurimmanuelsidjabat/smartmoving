@@ -1,0 +1,120 @@
+{# --------- VERSION 1 ------------- #}
+<footer class="section-spacing pb-0 bg-light">
+	<section class="firebase-footer  relative">
+		<div class="container mx-auto flex flex-row flex-wrap">
+			{# ––––––––– FIRST COLUMN –––––––––––– #}
+			<article
+				class="w-full md:w-6/12 lg:w-3/12 flex flex-col text-center md:text-left mb-8 md:pr-8 md:mb-8 lg:pr-0">
+				{% if global.footer.about_us.footer_logo %}
+				<img src="{{ global.footer.about_us.footer_logo.url }}" class="logo mb-6"
+					title={{ global.footer.about_us.footer_logo.title }}
+					alt="{{ global.footer.about_us.footer_logo.title }}">
+				{% endif %}
+				{% if global.footer.about_us.title %}
+				<h3 class="footer-column-title uppercase font-semibold pb-4 mb-4">
+					{{global.footer.about_us.title}}
+				</h3>
+				{% endif %}
+				{% if global.footer.about_us.description %}
+				<p class="footer-column-description lg:pr-8">{{global.footer.about_us.description}}</p>
+				{% endif %}
+				{% if global.footer.about_us.social_icons %}
+				<div class="icons-wrap flex flex-row justify-center md:justify-start">
+					{% for icons in global.footer.about_us.social_icons %}
+					<a href="{{ icons.link.url}}" class='footer-social-icons mr-4 hover:fill-primary'>
+						<img class="injectable w-7 h-5 object-contain" title="{{icons.icon.title}}"
+							alt="{{ icons.icon.alt }}" src="{{icons.icon.url}}">
+					</a>
+					{% endfor %}
+				</div>
+				{% endif %}
+			</article>
+			{# ––––––––– SECOND COLUMN –––––––––––– #}
+			<nav class="w-full md:w-6/12 lg:w-3/12 flex flex-col text-center lg:text-left mb-8 md:mb-8 lg:pl-6"
+				aria-label="services-navigation">
+				<h3 class="footer-column-title uppercase font-semibold pb-4 mb-4">
+					{{global.footer.services.title}}
+				</h3>
+				<ul>
+					{% for links in global.footer.services.links %}
+					<li class="mb-4">
+						<a href="{{links.link.url}}" class="text-black hover:text-primary">{{ links.link.title}}</a>
+					</li>
+					{% endfor %}
+
+				</ul>
+			</nav>
+			{# ––––––––– THIRD COLUMN –––––––––––– #}
+			<nav class="w-full md:w-6/12 lg:w-3/12 flex flex-col text-center lg:text-left mb-8 md:pr-8 md:mb-8 lg:pl-6 lg:pr-0"
+				aria-label="location-navigation">
+				<h3 class="footer-column-title uppercase font-semibold pb-4 mb-4">
+					{{global.footer.areas.title}}
+				</h3>
+				<ul>
+					{% for links in global.footer.areas.links %}
+					<li class="mb-4">
+						<a href="{{links.link.url}}" class="text-black hover:text-primary">{{ links.link.title}}</a>
+					</li>
+					{% endfor %}
+
+				</ul>
+			</nav>
+			{# ––––––––– FOURTH COLUMN –––––––––––– #}
+			<nav class="w-full md:w-6/12 lg:w-3/12 flex flex-col text-center lg:text-left mb-8 md:mb-8 lg:pl-6"
+				aria-label="address-navigation">
+				<h3 class="footer-column-title uppercase font-semibold pb-4 mb-4">
+					{{global.footer.contact_us.title}}
+				</h3>
+				<ul class="flex flex-col items-center lg:items-start">
+					<li class="flex flex-row items-start mb-4">
+						<img src="{{global.footer.contact_us.adress_block.icon.url}}"
+							class="injectable w-5 h-5 mt-1 mr-2"
+							title="{{ global.footer.contact_us.adress_block.icon.title }}"
+							alt="{{ global.footer.contact_us.adress_block.icon.alt }}">
+						<p class='m-0'>{{ global.footer.contact_us.adress_block.adress|striptags('<br>') }}</p>
+					</li>
+					<li class="flex flex-row items-start mb-4">
+						<img src="{{global.footer.contact_us.telephone_block.icon.url}}"
+							class="injectable w-4 h-5 mr-2"
+							title="{{ global.footer.contact_us.telephone_block.icon.title }}"
+							alt="{{ global.footer.contact_us.telephone_block.icon.alt }}">
+						<a class="hover:text-primary" href="{{ global.footer.contact_us.telephone_block.number.url }}"
+							class='m-0'>{{ global.footer.contact_us.telephone_block.number.title }}</a>
+					</li>
+					<li class="flex flex-row items-start mb-4">
+						<img src="{{global.footer.contact_us.email_block.icon.url}}"
+							class="injectable w-4 h-5 mr-2"
+							title="{{ global.footer.contact_us.email_block.icon.title }}"
+							alt="{{ global.footer.contact_us.email_block.icon.alt }}">
+						<a class="hover:text-primary" href="{{ global.footer.contact_us.email_block.email.url }}"
+							class='m-0'>{{ global.footer.contact_us.email_block.email.title }}</a>
+					</li>
+					<li class="flex flex-row items-start mb-4">
+						<img src="{{global.footer.contact_us.workin_hours.icon.url}}"
+							class="injectable w-4 h-5 mr-2"
+							title="{{ global.footer.contact_us.workin_hours.icon.title }}"
+							alt="{{ global.footer.contact_us.workin_hours.icon.alt }}">
+						<p class='m-0'>{{ global.footer.contact_us.workin_hours.hours }}</p>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		{# ––––––––– COPYRIGHT SECTION –––––––––––– #}
+	</section>
+	<section class='firebase-footer-copyright bg-light pt-4 pb-8 border-t border-t-stone-400/20'>
+		<nav class="container mx-auto flex flex-col-reverse xl:flex-row items-center flex-wrap text-center"
+			aria-label="legal-navigation">
+			<h3 class="m-0 pb-4 xl:mr-auto">Copyright &copy;
+				{{"now"|date('Y')}}
+				{{ global.copyright }}</h3>
+			<ul class='flex flex-col md:flex-row m-0 pb-4 items-center'>
+				{% for links in global.copyright_links %}
+				<li class="mb-2 md:mb-0">
+					<a class="hover:text-primary" href="{{links.link.url}}">{{ links.link.title }}</a>{% if not loop.last %}<span class="hidden md:inline-block px-4">|</span>{% endif %}
+				</li>
+				{% endfor %}
+			</ul>
+		</nav>
+	</section>
+</footer>
+{# --------- VERSION 1 END ------------- #}

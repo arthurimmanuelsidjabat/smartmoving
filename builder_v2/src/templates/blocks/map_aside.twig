@@ -1,0 +1,44 @@
+{#
+  Title: Map Aside
+  Description: Map with Content block
+  Category: formatting
+  Icon: location-alt
+  Keywords: map
+  Mode: edit
+  Align: left
+  PostTypes: page post
+  SupportsAlign: left right
+  SupportsMode: true
+  SupportsMultiple: true
+#}
+
+<section class="firebase-mapaside firebase-h__600 flex flex-row justify-center items-center relative">
+	<div class="absolute inset-0">
+		<img class="w-full h-full object-cover opacity-10 lg:h-auto" src="/wp-content/uploads/tT5z8ipQ.webp">
+	</div>
+	<div class="container mx-auto w-full flex flex-wrap items-center relative text-center section-spacing !px-0 !lg:px-4">
+		<article class="w-full lg:w-6/12 text-left py-8 pl-4 pr-4 lg:pl-0 lg:pr-8">
+			{% if fields.title %}
+			<h2 class="font-header text-4xl lg:text-5xl mb-8">
+				{{fields.title}}</h2>
+			{% endif %}
+			{% if fields.description %}
+			<div
+				class="content-wrap mb-8 {% if fields.two_columns_layout %}w-full lg:grid lg:grid-cols-2 gap-6 text-center lg:text-left{% else %}flex flex-col mx-auto w-full{% endif %}">
+				{{fields.description}}</div>
+			{% endif %}
+			{% if fields.button %}
+			<a href="{{fields.button.url}}" class="btn relative inline-block btn-primary" data-aos="fade-in"
+				data-aos-offset="-550" data-aos-delay="250" data-aos-duration="550"
+				data-aos-once="true">{{fields.button.title}}</a>
+			{% endif %}
+		</article>
+		{% if fields.map_embed %}
+		<div class="w-full lg:w-6/12 location-wrapper mx-aut py-8 px-0 lg:pr-0 lg:pl-8" data-aos="fade-left" data-aos-offset="-250"
+			data-aos-delay="250" data-aos-duration="450" data-aos-once="true">
+			{{ fields.map_embed }}
+		</div>
+		{% endif %}
+
+	</div>
+</section>

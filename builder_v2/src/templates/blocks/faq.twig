@@ -1,0 +1,84 @@
+{#
+  Title: Faq
+  Description: Faq section
+  Category: Firebase-blocks
+  Icon: editor-ul
+  Keywords: about
+  Mode: edit
+  Align: left
+  PostTypes: page post
+  SupportsAlign: left right
+  SupportsMode: true
+  SupportsMultiple: true
+#}
+{% if fields.faq_version == 'ver1' %}
+<section class="firebase-faq right section-spacing bg-white {{ block.className }}">
+	<div class="container mx-auto text-center mb-8">
+		{% if fields.title %}
+		<h2 class="font-header text-4xl lg:text-5xl mb-4">{{fields.title}}</h2>
+		{% endif %}
+		{% if fields.subtitle %}
+		<p class="content-wrap flex flex-col w-full md:w-11/12 lg:w-7/12 mx-auto">{{fields.subtitle}}</p>
+		{% endif %}
+	</div>
+	<div class="questions-wrapper container mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 pt-10">
+		{% for faq in fields.faq_row %}
+		<article
+			class="flex flex-row flex-wrap md:flex-nowrap bg-light rounded-2xl space-x-6 justify-center items-center md:items-start p-8"
+			data-aos="fade-up" data-aos-offset="150" data-aos-delay="{{loop.index}}50"
+			data-aos-duration="2*{{loop.index}}50" data-aos-once="true">
+			<div class="w-10 h-10 flex border border-primary bg-primary text-white rounded-full mt-2 mb-4 lg:mb-0">
+				<span class="text-2xl font-header w-10 h-8 self-center text-center">{{loop.index}}</span>
+			</div>
+			<div class="w-auto ml-4 md:ml-0 md:w-10/12 text-center md:text-left">
+				{% if faq.title or faq.content %}
+				<h3 class="font-header text-2xl mt-1 mb-4">{{ faq.title}}</h3>
+				<div class="font-normal leading-relaxed opacity-60">{{ faq.content }}</div>
+				{% endif %}
+			</div>
+		</article>
+		{% endfor %}
+	</div>
+</section>
+{% endif %}
+{% if fields.faq_version == 'ver2' %}
+<section class="firebase-faq right section-spacing bg-white {{ block.className }}">
+	<div class="container mx-auto text-center mb-8">
+		{% if fields.title %}
+		<h2 class="font-header text-4xl lg:text-5xl mb-4">
+			{{fields.title}}</h2>
+		{% endif %}
+		{% if fields.subtitle %}
+		<h3 class="content-wrap flex flex-col w-full md:w-11/12 lg:w-7/12 mx-auto">
+			{{fields.subtitle}}</h3>
+		{% endif %}
+	</div>
+	<div class="questions-wrapper container mx-auto grid grid-cols-1 gap-6 py-8 xl:w-8/12">
+		{% for faq in fields.faq_row %}
+		<article class="content dd text-core" data-no="{{loop.index}}">
+			<div class="questions  cursor-pointer flex justify-between items-center border-b-4 border-primary p-3 text-core mb-1 active"
+				data-no="{{loop.index}}" data-aos="fade-in" data-aos-offset="-350" data-aos-delay="{{loop.index}}50"
+				data-aos-duration="2*{{loop.index}}50" data-aos-once="true">
+				<div class="heading w-11/12">
+					<h4 class="text-3xl font-header">{{ faq.title}}</h4>
+				</div>
+				<div class="icons w-auto text-right">
+					<img src="{{ site.theme.link }}/images/icons/angle-down.svg" title="Arrow Down" alt="Arrow Down"
+						class="icon tr-smooth injectable w-9 h-9 p-[6px] bg-primary rounded-full fill-secondary ml-auto inline-block {% if loop.first %}rotate-180{% endif %}">
+				</div>
+
+			</div>
+			<div class="openSlide text-xl p-8 bg-gray-100 rounded-2xl mt-8" id="openSlide{{loop.index}}">{{faq.content}}
+			</div>
+		</article>
+		{% endfor %}
+		{% if fields.button %}
+		<button class="mt-10">
+			<a href="{{ fields.button.link}}"
+				class="btn btn-primary w-content inline-block tracking-wider font-medium text-center mb-4">{{fields.button.title}}
+			</a>
+		</button>
+		{% endif %}
+	</div>
+</section>
+{% endif %}

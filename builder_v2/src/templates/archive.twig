@@ -1,0 +1,85 @@
+{# This file demonstrates using most of the index.twig template and modifying 
+   just a small part. See `search.twig` for an example of another approach #}
+
+{% extends "index.twig" %}
+
+{% block content %}
+	<section class="firebase-main-banner section-spacing firebase-h__750 h-full w-full flex flex-col px-10 {{ block.className }}" {# Background settings #} style="background-image: url('{{ site.theme.link }}/images/moving-city-bg.jpg'); background-size: cover; background-position: cebter; background-repeat: no-repeat;">
+		<div class="overlay" style="background-color: rgba(8,8,10,.4); background-blend-mode: multiply;"></div>
+		<article class="firebase-banner-content section-spacing container mx-auto w-full md:w-10/12 lg:w-8/12 xl:w-7/12 h-full flex flex-col justify-center px-1 relative z-5 text-light">
+
+			<div class="text-center md:text-left">
+				{% if category %}
+					<h3 class="text-2xl">Category:</h3>
+				{% endif %}
+				{% if tag %}
+					<h3 class="text-2xl">Tag:</h3>
+				{% endif %}
+				{# Main title #}
+				<h1 class="xl:w-10/12 text-6xl font-header font-normal mb-6">
+					{{title }}</h1>
+			</div>
+
+		</article>
+	</section>
+
+
+	{# Showing posts archive #}
+	{% if posts|length > 0 %}
+		{% set link = fn('get_permalink', post.ID) %}
+		{% if post_cat[0].cat_name == title %}
+			<section class="firebase-category-content-left w-full mx-auto {% if fields.pagepicker.light_verstion %}light-version{% endif %}">
+				<div class="container mx-auto py-[80px] flex flex-row flex-wrap">
+					{% for post in posts %}
+						{% set meta = fn('get_term_meta', cat.term_id, 'picture' ) %}
+						<div class="w-full lg:w-6/12 flex-grow text-center lg:text-left p-4">
+							<a href="{{ TimberPost(news_item.ID).link }}"><img class="h-30 rounded-lg mb-8" src="{{ fn('get_the_post_thumbnail_url', post)}}" alt="{{ post.post_title }}"></a>
+							<a href="{{ TimberPost(news_item.ID).link }}">
+								<h3 class='text-3xl text-black mb-4'>{{ post.post_title }}</h3>
+							</a>
+							<div class="flex flex-col lg:flex-row mb-4">
+								<span class="text-primary">{{post.post_date|date('F d, Y')}}</span>
+								<span class='mx-2 hidden lg:inline'>|</span>
+								<span class='text-black'>by Firebase</span>
+							</div>
+							<p class='text-lg'>{{ post.post_excerpt }}</p>
+							<a class='btn-primary' href="{{ link }}">READ MORE</a>
+						</div>
+					{% endfor %}
+				</div>
+			</section>
+		{% endif %}
+	{% elseif posts|length == 0 and categories == 0 %}
+		<div class="section px-10 py-[80px] mb-10">
+			<h2 class="text-4xl font-light mb-4">Unfortunately no match was found.... try again!</h2>
+		</div>
+	{% endif %}
+
+
+	{# Tags posts #}
+	{% if post_tag[0].count > 0 %}
+		{% set link = fn('get_permalink', post.ID) %}
+		<section class="firebase-category-content-left w-full mx-auto">
+			<div class="container mx-auto py-[80px] flex flex-row flex-wrap">
+				{% for post in posts %}
+					{% set meta = fn('get_term_meta', cat.term_id, 'image' ) %}
+					<div class="w-full lg:w-6/12 text-center lg:text-left p-4">
+						<a href="{{ TimberPost(news_item.ID).link }}"><img class="h-30 rounded-lg mb-8" src="{{ fn('get_the_post_thumbnail_url', post)}}" alt="{{ post.post_title }}"></a>
+						<a href="{{ TimberPost(news_item.ID).link }}">
+							<h3 class='text-3xl text-black mb-4'>{{ post.post_title }}</h3>
+						</a>
+						<div class="flex flex-col lg:flex-row mb-4">
+							<span class="text-primary">{{post.post_date|date('F d, Y')}}</span>
+							<span class='mx-2 hidden lg:inline'>|</span>
+							<span class='text-black'>by Firebase</span>
+						</div>
+						<p class='text-lg'>{{ post.post_excerpt }}</p>
+						<a class='btn-primary' href="{{ link }}">READ MORE</a>
+					</div>
+
+				{% endfor %}
+			</div>
+		</section>
+	{% endif %}
+
+{% endblock %}

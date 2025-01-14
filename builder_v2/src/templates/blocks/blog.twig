@@ -1,0 +1,85 @@
+{#
+  Title: Blog
+  Description: Blog block
+  postegory: Firebase-blocks
+  Icon: welcome-write-blog
+  Keywords: services
+  Mode: edit
+  Align: left
+  PostTypes: page post
+  SupportsAlign: left right
+  SupportsMode: true
+  SupportsMultiple: true
+#}
+
+<section class="firebase-blog section-spacing bg-white {{ block.className }}">
+	<div class="container mx-auto flex flex-col text-center mb-6">
+		{% if fields.upper_title %}
+		<h3 class="font-header tracking-wider text-gray uppercase mb-2">{{ fields.upper_title}}</h3>
+		{% endif %}
+		{% if fields.title %}
+		<h2 class="font-header text-4xl lg:text-5xl mb-8">{{ fields.title}}</h2>
+		{% endif %}
+		{% if fields.subtitle %}
+		<h4 class="text-lg font-light mb-4">{{ fields.subtitle}}</h4>
+		{% endif %}
+	</div>
+	<div class="container mx-auto flex flex-row flex-wrap">
+		{# posts #}
+		{% set limit = fields.posts_per_view %}
+		{% set posts = {'category':category_id, 'numberposts':limit} %}
+		{# {% set posts = {'category':category_id, 'numberposts':'-1', 'posts_per_page': '6'} %} #}
+		{% for post in fn('get_posts', posts ) %}
+
+		{% set category_id = fields.blog.term_id %}
+		{% set link = fn('get_permalink', post.ID) %}
+		{% set thumbnail_url = fn('get_the_post_thumbnail_url', post.ID ) %}
+		<article class="w-full lg:w-4/12 flex text-center lg:text-left p-4" data-aos="fade-up" data-aos-offset="-250"
+			data-aos-delay="{{loop.index}}50" data-aos-duration="2*{{loop.index}}50" data-aos-once="true">
+			<div>
+				<a href="{{ link }}">
+					<figure>
+						<img class="h-350 object-cover w-full mb-8 rounded-2xl" src="{{ thumbnail_url }}"
+							alt="{{ post.post_title }}">
+					</figure>
+				</a>
+				<a href="{{ link }}">
+					<h3 class='text-2xl text-black mb-4'>{{ post.post_title }}</h3>
+				</a>
+				<p class="leading-relaxed">{{ post.post_excerpt|slice(0, 88) ~ '...' }}</p>
+				<div class="button-wrapper text-primary fill-primary hover:text-sky-800 hover:fill-sky-800">
+					<a class='btn-link__primary font-semibold flex justify-center lg:justify-start items-center'
+						href="{{ link }}">READ MORE
+						<img src="{{ site.theme.link }}/images/icons/arrow-right.svg"
+							class="injectable w-4 h-4 fill-inherit ml-2 inline-block" title="Arrow Right"
+							alt="Arrow Right"></a>
+				</div>
+			</div>
+		</article>
+		{% endfor %}
+		<div class="tool-pagination">
+			{% if posts.pagination.prev %}
+			<a href="{{posts.pagination.prev.link}}"
+				class="prev {{posts.pagination.prev.link|length ? '' : 'invisible'}}">Prev</a>
+			{% endif %}
+			<ul class="pages">
+				{% for page in posts.pagination.pages %}
+				<li>
+					{% if page.link %}
+					<a href="{{page.link}}" class="{{page.class}}">{{page.title}}</a>
+					{% else %}
+					<span class="{{page.class}}">{{page.title}}</span>
+					{% endif %}
+				</li>
+				{% endfor %}
+			</ul>
+			{% if posts.pagination.next %}
+			<a href="{{posts.pagination.next.link}}"
+				class="next {{posts.pagination.next.link|length ? '' : 'invisible'}}">Next</a>
+			{% endif %}
+		</div>
+		{% if fields.button %}
+		<a href="{{fields.button.url}}" class="mx-auto btn btn-primary mt-10">{{fields.button.title}}</a>
+		{% endif %}
+	</div>
+</section>

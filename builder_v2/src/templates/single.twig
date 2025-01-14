@@ -1,0 +1,49 @@
+{% extends "base.twig" %}
+
+{% block content %}
+{% set category = fn('get_the_category', post.ID) %}
+{% set cat_link = fn('get_category_link',category[0].term_id) %}
+{% set tags = fn('get_the_tags', post.ID) %}
+<div class="">
+	{{ post.content }}
+
+
+	<div class="container mx-auto">
+		{# DATE AND CATEGORY #}
+		{# <div class="flex flex-col lg:flex-row justify-center items-center mb-10 my-6">
+			<span class="text-base text-lg">{{post.post_date|date('F d, Y')}}</span><span
+				class='mx-2 hidden lg:inline-block'>|</span><span class='text-base text-lg'><a href="{{site.url}}/blog"
+					class="text-primary hover:text-base font-bold ml-1">{{category[0].name}}</a></span>
+		</div>
+	 #}
+
+	{# TAGS  #}
+	{# <div class="post-tags relative lg:w-7/12 text-center md:text-left mx-auto py-6">
+		<h3 class="text-xl block leading-relaxed mb-4">Tags:</h3>
+		{% for tag in post_tag %}
+		<div class="mb-4 p-4 bg-slate-200 w-auto inline-block cursor-pointer hover:bg-secondary hover:text-white tr-smooth mr-2 rounded-lg"><a
+				href="{{ fn('get_tag_link',tag.term_id)}}">{{tag.name}}</a></div>
+		{% endfor %}
+	</div>
+	</div> #}
+
+
+	{# CONTENT End #}
+	{# <div class="prev-next container mx-auto py-10 flex flex-row flex-wrap justify-center sm:justify-between"> #}
+		{# Previous post link if it exists #}
+		{# {% if previous_post %}
+		<div class="sm:mr-auto mb-6 sm:mb-0 mx-2">
+			<a class="btn rounded-lg bg-slate-200 hover:bg-secondary hover:text-white text-base"
+				href="{{ previous_post.link }}">Previous Post</a>
+		</div>
+		{% endif %} #}
+
+		{# Next post link if it exists #}
+		{# {% if next_post %}
+		<div class="sm:ml-auto mx-2">
+			<a class="btn-primary rounded-lg" href="{{ next_post.link }}">Next Post</a>
+		</div>
+		{% endif %} #}
+	{# </div> #}
+</div><!-- / -->
+{% endblock %}

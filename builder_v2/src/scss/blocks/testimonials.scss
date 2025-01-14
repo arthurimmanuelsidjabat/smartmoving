@@ -1,0 +1,34 @@
+.firebase-testimonials {
+    .ti-widget.ti-goog .ti-review-item {
+        .ti-inner {
+            @extend .tr-smooth !optional;
+            @apply bg-transparent border-primary #{!important};
+            &:hover {
+                @apply bg-primary text-white #{!important};
+            }
+        }
+        &:hover {
+            transform: translate(0);
+            cursor: pointer;
+
+            & .ti-name,.ti-date,.ti-read-more-active {
+                @apply text-white;
+            }
+        }     
+    }
+    .ti-controls-dots {
+        margin-top: 2rem !important;
+        .dot {
+        margin-left: .2rem;
+        margin-right: .2rem;
+        }
+    }
+    .ti-footer {
+        display: none !important;
+    }
+    svg {
+        display: inline-block !important;
+        max-width: 20px !important;
+        
+    }
+}

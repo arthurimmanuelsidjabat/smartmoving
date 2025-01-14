@@ -1,0 +1,20 @@
+{
+    "name": "arthur/builder_v2-main",
+    "description": "Firebase",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Arthur\\BuilderV2Main\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "timber/timber": "^1.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    }
+}

@@ -1,0 +1,69 @@
+{#
+  Title: Image Icon List
+  Description: Icon List with Image section
+  Category: formatting
+  Icon: table-col-before
+  Keywords: Icon List
+  Mode: edit
+  Align: left
+  PostTypes: page post
+  SupportsAlign: left right
+  SupportsMode: true
+  SupportsMultiple: true
+#}
+
+<section class="firebase-imageiconlist section-spacing bg-white {{ block.className }}">
+	<div class="container mx-auto flex flex-row flex-wrap">
+		{% if fields.upper_title and fields.title %}
+		<div class="container mx-auto flex flex-col text-center pb-1 mb-8">
+			<h3 class="font-header tracking-wider text-gray uppercase mb-2">{{ fields.upper_title }}</h3>
+			<h2 class="font-header text-4xl lg:text-5xl mb-8">{{ fields.title}}</h2>
+		</div>
+		{% else %}
+		{% if fields.upper_title %}
+		<h3 class="font-header tracking-wider text-gray uppercase mb-2">{{ fields.upper_title }}</h3>
+		{% endif %}
+		{% if fields.title %}
+		<h2 class="font-header text-4xl mb-8">{{ fields.title}}</h2>
+		{% endif %}
+		{% endif %}
+		<div class="content-box w-full lg:w-4/12">
+			{% if fields.image %}
+			<figure class="w-full image-wrap relative">
+				<img class='md:min-h-[450px] responsive-image rounded-2xl object-cover' src="{{fields.image.url}}"
+					alt="{{fields.image.alt}}" title="{{fields.image.title}}">
+			</figure>
+			{% endif %}
+		</div>
+		{% if fields.list %}
+		<div class="w-full lg:w-7/12 lg:ml-auto flex mt-8">
+			<div class="grid grid-cols-1 w-full md:grid-cols-2 gap-12">
+				{% for item in fields.list %}
+				<article class="flex flex-col lg:flex-row justify-center text-center lg:text-left bg-white mx-auto"
+					data-aos="fade-left" data-aos-offset="-350" data-aos-delay="{{loop.index}}50"
+					data-aos-duration="2*{{loop.index}}50" data-aos-once="true">
+					{% if item.icon.url %}
+					<figure class="w-20 h-20 mx-auto mb-6 lg:mb-0 lg:ml-0">
+						<img src="{{ item.icon.url }}" title="{{ item.icon.title }}" alt="{{ item.icon.alt }}"
+							class="injectable w-max h-auto fill-primary lg:ml-0">
+					</figure>
+					{% endif %}
+					<div class="content pl-6">
+						{% if item.title %}
+						<h3 class="text-2xl font-header mb-2">{{item.title}}
+						</h3>
+						{% endif %}
+						{% if item.description %}
+						<div class="text-normal leading-relaxed">{{item.description}}</div>
+						{% endif %}
+					</div>
+				</article>
+				{% endfor %}
+			</div>
+		</div>
+		{% endif %}
+		{% if fields.button %}
+		<a href="{{fields.button.url}}" class="block lg:hidden mx-auto btn btn-primary mt-4">{{fields.button.title}}</a>
+		{% endif %}
+	</div>
+</section>

@@ -1,0 +1,16 @@
+<section class="topbar bg-primary py-4" style="position:relative; display:block; z-index: 100;">
+	<div class="max-w-screen-xl px-4 mx-auto flex flex-row flex-wrap justify-between items-center xl:px-0">
+		<div class="icons-wrap flex flex-row items-center mb-0 mr-auto" role="region">
+			{% for icons in global.topbar.social_icons %}
+			<a href="{{ icons.link.url}}"
+				class="topbar-social-icons mr-2 fill-white flex items-center hover:fill-secondary">
+				<img class="injectable w-7 h-5 object-contain fill-inherit" alt="{{ icons.icon.alt }}"
+					title="{{ icons.icon.title }}" src="{{icons.icon.url}}">
+			</a>
+			{% endfor %}
+		</div>
+		<p class="leading-none hidden text-white !mb-0 lg:inline-block">
+			We’re here to assist you and keep you healthy. <a href="#" class="text-secondary fill-secondary ml-auto !py-2 hover:text-secondary/70 hover:fill-secondary/70"><span class="hidden mr-2 md:inline-block">Our Actions For COVID-19</span><img class="injectable inline-block w-4 h-4 object-contain fill-inherit align-[-0.125em] inline-block" src="/wp-content/uploads/2022/06/arrow-right.svg" title="{{ topbar.mobile_icon.title }}" alt="{{ topbar.mobile_icon.alt }}"></a>
+		</p>
+	</div>
+</section>

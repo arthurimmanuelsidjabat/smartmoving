@@ -1,0 +1,55 @@
+{#
+  Title: Image Grid Text
+  Description: A Image Grid section with Text.
+  Category: formatting
+  Icon: editor-table
+  Keywords: about
+  Mode: edit
+  Align: left
+  PostTypes: page post
+  SupportsAlign: left right
+  SupportsMode: true
+  SupportsMultiple: true
+#}
+<section class="firebase-imagegridtext section-spacing bg-white {{ block.className }}">
+	<div class="container mx-auto flex flex-col-reverse lg:flex-row flex-wrap items-center">
+		{% if fields.grid %}
+		<div class="w-full lg:w-6/12 flex mb-8">
+			<div class="w-full grid grid-cols-2 md:gap-6 place-items-center">
+				{% for item in fields.grid %}
+				{% if item.image.url %}
+				<img src="{{ item.image.url }}"
+					class="p-2 sm:p-10 lg:p-0 rounded-2xl w-auto image-cover mx-auto mb-4 lg:mb-0"
+					alt="{{ item.image.alt }}" title="{{ item.image.title }}" data-aos="fade-up" data-aos-offset="150"
+					data-aos-delay="{{loop.index}}50" data-aos-duration="2*{{loop.index}}50" data-aos-once="true">
+				{% endif %}
+				{% endfor %}
+			</div>
+		</div>
+		{% endif %}
+		<div class="w-full lg:w-6/12 lg:pl-10">
+			{% if fields.upper_title and fields.title %}
+			<div class="container mx-auto flex flex-col text-center lg:text-left pb-1 md:mb-4">
+				<h3 class="font-header tracking-wider text-gray uppercase mb-2">{{ fields.upper_title }}</h3>
+				<h2 class="font-header text-4xl lg:text-5xl mb-8">{{ fields.title}}</h2>
+			</div>
+			{% else %}
+			{% if fields.upper_title %}
+			<h3 class="font-header tracking-wider text-gray uppercase mb-2">{{ fields.upper_title }}</h3>
+			{% endif %}
+			{% if fields.title %}
+			<h2 class="font-header text-4xl mb-8">{{ fields.title}}</h2>
+			{% endif %}
+			{% endif %}
+			{% if fields.description %}
+			<div class="w-11/12 text-normal text-center lg:text-left leading-relaxed mx-auto mb-10">
+				{{fields.description}}</div>
+			{% endif %}
+			{% if fields.button %}
+			<a href="{{ fields.button.url}}"
+				class="btn-primary flex items-center mx-auto lg:ml-0 font-medium uppercase text-primary fill-primary w-content tracking-wider text-center mb-4">{{fields.button.title}}
+			</a>
+			{% endif %}
+		</div>
+	</div>
+</section>
